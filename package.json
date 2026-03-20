@@ -1,0 +1,11 @@
+{
+  "name": "aarush-birthday-app",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public"
+  },
+  "devDependencies": {
+    "wrangler": "^4.8.0"
+  }
+}

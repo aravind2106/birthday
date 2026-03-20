@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aarush's Art-Tastic Birthday Bash</title>
+    <meta
+      name="description"
+      content="Join Aarush for an art-filled 6th birthday celebration."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-card">
+        <div class="paint paint-a"></div>
+        <div class="paint paint-b"></div>
+        <div class="paint paint-c"></div>
+
+        <p class="eyebrow">Let's get creative. Let's celebrate.</p>
+        <h1>Art-Tastic Birthday Bash</h1>
+        <p class="hero-copy">
+          It's a masterpiece in the making for <strong>Aarush</strong> as he
+          celebrates <strong>6 creative years</strong>.
+        </p>
+
+        <div class="event-grid">
+          <article>
+            <span class="label">Date</span>
+            <strong>Sunday, April 12</strong>
+          </article>
+          <article>
+            <span class="label">Time</span>
+            <strong>3:00 PM - 5:00 PM</strong>
+          </article>
+          <article>
+            <span class="label">Location</span>
+            <strong>1404 SW Falkirk Run Ave, Bentonville, AR 72713</strong>
+          </article>
+        </div>
+
+        <div class="hero-art">
+          <div class="cake-card">
+            <div class="cake-top"></div>
+            <div class="cake-body"></div>
+            <div class="cake-base"></div>
+          </div>
+          <div class="palette">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp-card">
+        <div>
+          <p class="section-kicker">RSVP</p>
+          <h2>Let your creativity flow with us</h2>
+          <p class="section-copy">
+            Tell us who's coming so we can get the painting stations and treats
+            ready.
+          </p>
+        </div>
+
+        <form id="rsvp-form" class="rsvp-form">
+          <label>
+            Parent or guest name
+            <input type="text" name="guestName" maxlength="80" required />
+          </label>
+
+          <label>
+            Email or phone
+            <input type="text" name="contact" maxlength="120" required />
+          </label>
+
+          <div class="inline-fields">
+            <label>
+              Adults
+              <input type="number" name="adultCount" min="0" max="10" value="1" required />
+            </label>
+
+            <label>
+              Kids
+              <input type="number" name="childCount" min="0" max="10" value="1" required />
+            </label>
+          </div>
+
+          <label>
+            Child names
+            <input
+              type="text"
+              name="childNames"
+              maxlength="120"
+              placeholder="Aarav, Maya"
+            />
+          </label>
+
+          <label>
+            Notes
+            <textarea
+              name="notes"
+              rows="4"
+              maxlength="300"
+              placeholder="Food allergies, questions, anything we should know"
+            ></textarea>
+          </label>
+
+          <label class="attending-toggle">
+            <input type="checkbox" name="attending" checked />
+            <span>We can make it</span>
+          </label>
+
+          <button type="submit">Send RSVP</button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
