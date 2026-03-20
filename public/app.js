@@ -58,8 +58,9 @@ function updateCountdown() {
   const dayNode = document.querySelector('[data-unit="days"]');
   const hourNode = document.querySelector('[data-unit="hours"]');
   const minuteNode = document.querySelector('[data-unit="minutes"]');
+  const secondNode = document.querySelector('[data-unit="seconds"]');
 
-  if (!headline || !dayNode || !hourNode || !minuteNode) {
+  if (!headline || !dayNode || !hourNode || !minuteNode || !secondNode) {
     return;
   }
 
@@ -72,18 +73,21 @@ function updateCountdown() {
     dayNode.textContent = "0";
     hourNode.textContent = "0";
     minuteNode.textContent = "0";
+    secondNode.textContent = "0";
     return;
   }
 
-  const totalMinutes = Math.floor(difference / 60000);
-  const days = Math.floor(totalMinutes / (60 * 24));
-  const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
-  const minutes = totalMinutes % 60;
+  const totalSeconds = Math.floor(difference / 1000);
+  const days = Math.floor(totalSeconds / (60 * 60 * 24));
+  const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
 
   headline.textContent = `${days} days until Aarush's art party opens its studio doors.`;
   dayNode.textContent = String(days);
   hourNode.textContent = String(hours);
   minuteNode.textContent = String(minutes);
+  secondNode.textContent = String(seconds);
 }
 
 function burstConfetti(x, y, count = 24) {
@@ -115,6 +119,30 @@ function burstConfetti(x, y, count = 24) {
 
     window.setTimeout(() => piece.remove(), 1500);
   }
+}
+
+function launchPartyFriend() {
+  const friend = document.querySelector("#party-friend");
+  const popper = document.querySelector("#friend-popper");
+
+  if (!friend || !popper) {
+    return;
+  }
+
+  friend.classList.add("is-live");
+
+  window.setTimeout(() => {
+    const rect = popper.getBoundingClientRect();
+    const burstX = rect.left + rect.width / 2;
+    const burstY = rect.top + rect.height / 2;
+
+    friend.classList.add("is-pop");
+    burstConfetti(burstX, burstY, 34);
+
+    window.setTimeout(() => {
+      friend.classList.remove("is-pop");
+    }, 650);
+  }, 1100);
 }
 
 function escapeHtml(value) {
@@ -228,7 +256,8 @@ if (rsvpForm) {
 }
 
 updateCountdown();
-window.setInterval(updateCountdown, 30000);
+window.setInterval(updateCountdown, 1000);
+window.addEventListener("load", launchPartyFriend, { once: true });
 
 document.addEventListener("click", (event) => {
   const isInteractiveElement = event.target.closest("input, textarea, button, label, a");

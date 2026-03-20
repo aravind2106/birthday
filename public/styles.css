@@ -161,7 +161,7 @@ body {
 
 .countdown-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -542,6 +542,207 @@ h2 {
   border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
+.party-friend {
+  position: absolute;
+  right: 18px;
+  bottom: 24px;
+  width: 170px;
+  opacity: 0;
+  transform: translateX(140px);
+}
+
+.party-friend.is-live {
+  animation: friend-enter 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.party-friend.is-pop .friend-popper {
+  animation: friend-pop 0.5s ease-out 1;
+}
+
+.party-friend.is-pop .friend-arm.right {
+  animation: arm-pop 0.5s ease-out 1;
+}
+
+.friend-bubble {
+  margin-left: 10px;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 18px 18px 18px 6px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(34, 34, 34, 0.08);
+  font-size: 0.86rem;
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(34, 34, 34, 0.08);
+}
+
+.friend-body {
+  position: relative;
+  width: 100px;
+  margin-left: auto;
+  margin-right: 20px;
+  height: 154px;
+}
+
+.friend-hat {
+  position: absolute;
+  top: 0;
+  left: 28px;
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 34px solid var(--pink);
+}
+
+.friend-hat::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--yellow);
+}
+
+.friend-head {
+  position: absolute;
+  top: 24px;
+  left: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: #ffe2bf;
+  border: 3px solid rgba(34, 34, 34, 0.8);
+}
+
+.friend-head .eye {
+  position: absolute;
+  top: 20px;
+  width: 6px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.9);
+}
+
+.friend-head .eye.left { left: 16px; }
+.friend-head .eye.right { right: 16px; }
+
+.friend-head .smile {
+  position: absolute;
+  left: 19px;
+  bottom: 12px;
+  width: 16px;
+  height: 8px;
+  border-bottom: 3px solid rgba(34, 34, 34, 0.9);
+  border-radius: 0 0 16px 16px;
+}
+
+.friend-torso {
+  position: absolute;
+  top: 76px;
+  left: 24px;
+  width: 48px;
+  height: 42px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--teal), var(--blue));
+  border: 3px solid rgba(34, 34, 34, 0.8);
+}
+
+.friend-arm,
+.friend-leg {
+  position: absolute;
+  background: rgba(34, 34, 34, 0.85);
+  border-radius: 999px;
+}
+
+.friend-arm {
+  top: 84px;
+  width: 10px;
+  height: 44px;
+}
+
+.friend-arm.left {
+  left: 16px;
+  transform: rotate(18deg);
+}
+
+.friend-arm.right {
+  left: 70px;
+  transform: rotate(-28deg);
+  transform-origin: top center;
+}
+
+.friend-leg {
+  top: 116px;
+  width: 10px;
+  height: 36px;
+}
+
+.friend-leg.left {
+  left: 34px;
+  transform: rotate(8deg);
+}
+
+.friend-leg.right {
+  left: 54px;
+  transform: rotate(-8deg);
+}
+
+.friend-popper {
+  position: absolute;
+  top: 74px;
+  left: 84px;
+  width: 54px;
+  height: 54px;
+}
+
+.friend-popper i {
+  position: absolute;
+  width: 8px;
+  height: 22px;
+  border-radius: 999px;
+  transform-origin: bottom center;
+}
+
+.friend-popper i:nth-child(1) { left: 10px; top: 4px; background: var(--pink); transform: rotate(-36deg); }
+.friend-popper i:nth-child(2) { left: 18px; top: 0; background: var(--yellow); transform: rotate(-6deg); }
+.friend-popper i:nth-child(3) { left: 28px; top: 3px; background: var(--teal); transform: rotate(18deg); }
+.friend-popper i:nth-child(4) { left: 38px; top: 10px; background: var(--orange); transform: rotate(42deg); }
+
+@keyframes friend-enter {
+  0% {
+    opacity: 0;
+    transform: translateX(140px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes friend-pop {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes arm-pop {
+  0%, 100% {
+    transform: rotate(-28deg);
+  }
+  50% {
+    transform: rotate(-56deg);
+  }
+}
+
 .rsvp-header {
   position: relative;
 }
@@ -716,6 +917,20 @@ button:hover {
   .hero-banner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .party-friend {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-left: auto;
+    margin-top: 18px;
+    transform: none;
+    opacity: 1;
+  }
+
+  .party-friend.is-live {
+    animation: none;
   }
 }
 
