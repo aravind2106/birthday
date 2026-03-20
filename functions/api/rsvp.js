@@ -8,6 +8,10 @@ function json(data, status = 200) {
   });
 }
 
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -33,6 +37,10 @@ export async function onRequestPost(context) {
 
   if (!guestName || !contact) {
     return json({ error: "Name and contact are required." }, 400);
+  }
+
+  if (!isValidEmail(contact)) {
+    return json({ error: "Enter a valid email address." }, 400);
   }
 
   if (!Number.isFinite(adultCount) || !Number.isFinite(childCount)) {

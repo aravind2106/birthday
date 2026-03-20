@@ -2,15 +2,22 @@ async function submitRsvp(form) {
   const status = document.querySelector("#form-status");
   const button = form.querySelector("button");
   const formData = new FormData(form);
+  const email = formData.get("email")?.toString().trim() || "";
   const payload = {
     guestName: formData.get("guestName")?.toString().trim(),
-    contact: formData.get("contact")?.toString().trim(),
+    contact: email,
     adultCount: Number(formData.get("adultCount")),
     childCount: Number(formData.get("childCount")),
     childNames: formData.get("childNames")?.toString().trim() || "",
     notes: formData.get("notes")?.toString().trim() || "",
     attending: formData.get("attending") === "on"
   };
+
+  if (!isValidEmail(email)) {
+    status.textContent = "Please enter a valid email address.";
+    form.querySelector('[name="email"]').focus();
+    return;
+  }
 
   button.disabled = true;
   status.textContent = "Sending your RSVP...";
@@ -39,6 +46,10 @@ async function submitRsvp(form) {
   } finally {
     button.disabled = false;
   }
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 function escapeHtml(value) {
@@ -135,6 +146,16 @@ async function loadAdmin(form) {
 
 const rsvpForm = document.querySelector("#rsvp-form");
 if (rsvpForm) {
+  const emailInput = rsvpForm.querySelector('[name="email"]');
+  emailInput?.addEventListener("input", () => {
+    if (!emailInput.value || isValidEmail(emailInput.value.trim())) {
+      emailInput.setCustomValidity("");
+      return;
+    }
+
+    emailInput.setCustomValidity("Please enter a valid email address.");
+  });
+
   rsvpForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     await submitRsvp(rsvpForm);

@@ -17,57 +17,126 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <div class="sky-confetti" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <main class="page-shell">
       <section class="hero-card">
         <div class="paint paint-a"></div>
         <div class="paint paint-b"></div>
         <div class="paint paint-c"></div>
+        <div class="paint paint-d"></div>
 
-        <p class="eyebrow">Let's get creative. Let's celebrate.</p>
-        <h1>Art-Tastic Birthday Bash</h1>
-        <p class="hero-copy">
-          It's a masterpiece in the making for <strong>Aarush</strong> as he
-          celebrates <strong>6 creative years</strong>.
-        </p>
+        <div class="balloon-cluster balloon-left" aria-hidden="true">
+          <span class="balloon pink"></span>
+          <span class="balloon yellow"></span>
+          <span class="balloon blue"></span>
+        </div>
+        <div class="balloon-cluster balloon-right" aria-hidden="true">
+          <span class="balloon orange"></span>
+          <span class="balloon teal"></span>
+          <span class="balloon pink"></span>
+        </div>
+
+        <div class="hero-banner">
+          <p class="eyebrow">Let's get creative. Let's celebrate.</p>
+          <span class="tag-pill">Paint, party, and cake</span>
+        </div>
+
+        <div class="headline-wrap">
+          <h1>
+            <span>Art-Tastic</span>
+            <span>Birthday Bash</span>
+          </h1>
+          <p class="hero-copy">
+            It's a masterpiece in the making for <strong>Aarush</strong> as he
+            celebrates <strong>6 colorful years</strong> with paint splashes,
+            balloons, treats, and hands-on creative fun.
+          </p>
+        </div>
 
         <div class="event-grid">
-          <article>
+          <article class="event-card">
             <span class="label">Date</span>
             <strong>Sunday, April 12</strong>
+            <p>Come ready to paint and play.</p>
           </article>
-          <article>
+          <article class="event-card">
             <span class="label">Time</span>
             <strong>3:00 PM - 5:00 PM</strong>
+            <p>Drop in for a bright, joyful afternoon.</p>
           </article>
-          <article>
+          <article class="event-card wide">
             <span class="label">Location</span>
             <strong>1404 SW Falkirk Run Ave, Bentonville, AR 72713</strong>
+            <p>Our backyard turns into a mini art studio for the day.</p>
           </article>
         </div>
 
-        <div class="hero-art">
-          <div class="cake-card">
-            <div class="cake-top"></div>
-            <div class="cake-body"></div>
-            <div class="cake-base"></div>
+        <div class="celebration-strip" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="hero-artstage">
+          <div class="hero-art">
+            <div class="ribbon">Masterpiece in the making</div>
+            <div class="cake-card">
+              <div class="cake-top"></div>
+              <div class="cake-body"></div>
+              <div class="cake-base"></div>
+            </div>
+            <div class="palette">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="party-pop pop-left">
+              <i></i><i></i><i></i><i></i>
+            </div>
+            <div class="party-pop pop-right">
+              <i></i><i></i><i></i><i></i>
+            </div>
           </div>
-          <div class="palette">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+
+          <div class="details-ribbon">
+            <div>
+              <span class="label">Dress code</span>
+              <strong>Play clothes welcome</strong>
+            </div>
+            <div>
+              <span class="label">Vibe</span>
+              <strong>Balloons, brushes, and birthday magic</strong>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="rsvp-card">
-        <div>
+        <div class="rsvp-header">
           <p class="section-kicker">RSVP</p>
           <h2>Let your creativity flow with us</h2>
           <p class="section-copy">
-            Tell us who's coming so we can get the painting stations and treats
-            ready.
+            Tell us who is coming so we can prep easels, aprons, cupcakes, and
+            a happy little spot for everyone.
           </p>
         </div>
 
@@ -78,8 +147,15 @@
           </label>
 
           <label>
-            Email or phone
-            <input type="text" name="contact" maxlength="120" required />
+            Email address
+            <input
+              type="email"
+              name="email"
+              maxlength="120"
+              placeholder="name@example.com"
+              autocomplete="email"
+              required
+            />
           </label>
 
           <div class="inline-fields">
@@ -122,6 +198,11 @@
           <button type="submit">Send RSVP</button>
           <p id="form-status" class="form-status" aria-live="polite"></p>
         </form>
+
+        <div class="mini-note">
+          <strong>Creative note:</strong> If your child has a favorite color,
+          pop it into the notes and we will try to match their station.
+        </div>
       </section>
     </main>
 

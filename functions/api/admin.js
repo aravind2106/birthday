@@ -13,6 +13,10 @@ export async function onRequestGet(context) {
   const expectedPassword = env.ADMIN_PASSWORD;
   const providedPassword = request.headers.get("Authorization")?.replace(/^Bearer\s+/i, "");
 
+  if (!env.DB) {
+    return json({ error: "Database binding is missing." }, 500);
+  }
+
   if (!expectedPassword) {
     return json({ error: "Admin password is not configured." }, 500);
   }
