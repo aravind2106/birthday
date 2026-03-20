@@ -40,7 +40,8 @@ async function submitRsvp(form) {
     form.querySelector('[name="adultCount"]').value = "1";
     form.querySelector('[name="childCount"]').value = "1";
     form.querySelector('[name="attending"]').checked = true;
-    status.textContent = "Thanks. Your RSVP is in.";
+    status.textContent = "Brilliant. Your art crew is on the guest list.";
+    burstConfetti(window.innerWidth / 2, Math.min(window.innerHeight * 0.4, 320), 36);
   } catch (error) {
     status.textContent = error.message;
   } finally {
@@ -50,6 +51,70 @@ async function submitRsvp(form) {
 
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function updateCountdown() {
+  const headline = document.querySelector("#countdown-headline");
+  const dayNode = document.querySelector('[data-unit="days"]');
+  const hourNode = document.querySelector('[data-unit="hours"]');
+  const minuteNode = document.querySelector('[data-unit="minutes"]');
+
+  if (!headline || !dayNode || !hourNode || !minuteNode) {
+    return;
+  }
+
+  const target = new Date("2026-04-12T15:00:00-05:00");
+  const now = new Date();
+  const difference = target.getTime() - now.getTime();
+
+  if (difference <= 0) {
+    headline.textContent = "The party is happening right now.";
+    dayNode.textContent = "0";
+    hourNode.textContent = "0";
+    minuteNode.textContent = "0";
+    return;
+  }
+
+  const totalMinutes = Math.floor(difference / 60000);
+  const days = Math.floor(totalMinutes / (60 * 24));
+  const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
+  const minutes = totalMinutes % 60;
+
+  headline.textContent = `${days} days until Aarush's art party opens its studio doors.`;
+  dayNode.textContent = String(days);
+  hourNode.textContent = String(hours);
+  minuteNode.textContent = String(minutes);
+}
+
+function burstConfetti(x, y, count = 24) {
+  const layer = document.querySelector("#confetti-burst-layer");
+
+  if (!layer) {
+    return;
+  }
+
+  const colors = ["#ec4d8f", "#ff8b2b", "#ffd34d", "#1aa8b8", "#3b70ff", "#7bcf52"];
+
+  for (let index = 0; index < count; index += 1) {
+    const piece = document.createElement("span");
+    const angle = (Math.PI * 2 * index) / count;
+    const distance = 60 + Math.random() * 120;
+    const driftX = Math.cos(angle) * distance;
+    const driftY = Math.sin(angle) * distance + 40 + Math.random() * 60;
+    const rotation = `${Math.round(Math.random() * 360)}deg`;
+
+    piece.className = "burst-piece";
+    piece.style.left = `${x}px`;
+    piece.style.top = `${y}px`;
+    piece.style.background = colors[index % colors.length];
+    piece.style.setProperty("--x", `${driftX}px`);
+    piece.style.setProperty("--y", `${driftY}px`);
+    piece.style.setProperty("--r", rotation);
+    piece.style.animationDelay = `${Math.random() * 0.08}s`;
+    layer.appendChild(piece);
+
+    window.setTimeout(() => piece.remove(), 1500);
+  }
 }
 
 function escapeHtml(value) {
@@ -161,6 +226,19 @@ if (rsvpForm) {
     await submitRsvp(rsvpForm);
   });
 }
+
+updateCountdown();
+window.setInterval(updateCountdown, 30000);
+
+document.addEventListener("click", (event) => {
+  const isInteractiveElement = event.target.closest("input, textarea, button, label, a");
+
+  if (isInteractiveElement) {
+    return;
+  }
+
+  burstConfetti(event.clientX, event.clientY, 28);
+});
 
 const adminForm = document.querySelector("#admin-form");
 if (adminForm) {

@@ -67,6 +67,27 @@
           </p>
         </div>
 
+        <div class="countdown-card" aria-live="polite">
+          <div>
+            <span class="label">Countdown to party time</span>
+            <strong id="countdown-headline">Loading the party timer...</strong>
+          </div>
+          <div class="countdown-grid" id="countdown-grid">
+            <div class="countdown-tile">
+              <span class="count-number" data-unit="days">0</span>
+              <span class="count-label">days</span>
+            </div>
+            <div class="countdown-tile">
+              <span class="count-number" data-unit="hours">0</span>
+              <span class="count-label">hours</span>
+            </div>
+            <div class="countdown-tile">
+              <span class="count-number" data-unit="minutes">0</span>
+              <span class="count-label">minutes</span>
+            </div>
+          </div>
+        </div>
+
         <div class="event-grid">
           <article class="event-card">
             <span class="label">Date</span>
@@ -128,6 +149,21 @@
             </div>
           </div>
         </div>
+
+        <div class="party-features">
+          <article>
+            <span class="label">Mini makers</span>
+            <strong>Painting tables and bright supplies</strong>
+          </article>
+          <article>
+            <span class="label">Sweet stuff</span>
+            <strong>Cake, snacks, and birthday treats</strong>
+          </article>
+          <article>
+            <span class="label">Party energy</span>
+            <strong>Tap anywhere on the page to burst confetti</strong>
+          </article>
+        </div>
       </section>
 
       <section class="rsvp-card">
@@ -142,17 +178,17 @@
 
         <form id="rsvp-form" class="rsvp-form">
           <label>
-            Parent or guest name
+            Artist crew captain
             <input type="text" name="guestName" maxlength="80" required />
           </label>
 
           <label>
-            Email address
+            Paint-splattered email address
             <input
               type="email"
               name="email"
               maxlength="120"
-              placeholder="name@example.com"
+              placeholder="artist@example.com"
               autocomplete="email"
               required
             />
@@ -160,42 +196,42 @@
 
           <div class="inline-fields">
             <label>
-              Adults
+              Big artists
               <input type="number" name="adultCount" min="0" max="10" value="1" required />
             </label>
 
             <label>
-              Kids
+              Little artists
               <input type="number" name="childCount" min="0" max="10" value="1" required />
             </label>
           </div>
 
           <label>
-            Child names
+            Tiny Picasso lineup
             <input
               type="text"
               name="childNames"
               maxlength="120"
-              placeholder="Aarav, Maya"
+              placeholder="Maya, Leo, Zoe"
             />
           </label>
 
           <label>
-            Notes
+            Special party notes
             <textarea
               name="notes"
               rows="4"
               maxlength="300"
-              placeholder="Food allergies, questions, anything we should know"
+              placeholder="Favorite color, food allergies, glitter-level enthusiasm, anything we should know"
             ></textarea>
           </label>
 
           <label class="attending-toggle">
             <input type="checkbox" name="attending" checked />
-            <span>We can make it</span>
+            <span>Our art crew is coming</span>
           </label>
 
-          <button type="submit">Send RSVP</button>
+          <button type="submit">Reserve Our Easel</button>
           <p id="form-status" class="form-status" aria-live="polite"></p>
         </form>
 
@@ -206,6 +242,7 @@
       </section>
     </main>
 
+    <div id="confetti-burst-layer" class="confetti-burst-layer" aria-hidden="true"></div>
     <script src="/app.js" defer></script>
   </body>
 </html>
