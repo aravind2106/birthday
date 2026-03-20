@@ -1,4 +1,4 @@
-# Aarush Birthday App
+# Birthday App
 
 Tiny RSVP site for a short-lived birthday invite, built for free hosting on Cloudflare Pages with a D1 database.
 
@@ -19,7 +19,7 @@ Tiny RSVP site for a short-lived birthday invite, built for free hosting on Clou
 2. Create a D1 database:
 
    ```bash
-   npx wrangler d1 create aarush-birthday-rsvps
+   npx wrangler d1 create birthday-rsvp
    ```
 
 3. Copy the returned `database_id` into `wrangler.jsonc`.
@@ -27,7 +27,7 @@ Tiny RSVP site for a short-lived birthday invite, built for free hosting on Clou
 4. Apply the schema:
 
    ```bash
-   npx wrangler d1 execute aarush-birthday-rsvps --file=schema.sql
+   npx wrangler d1 execute birthday-rsvp --file=schema.sql
    ```
 
 5. For local development, set a strong admin password in `wrangler.jsonc`.
