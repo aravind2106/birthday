@@ -833,6 +833,41 @@ button:hover {
   line-height: 1.5;
 }
 
+.registry-link {
+  display: block;
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  text-decoration: none;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, rgba(255, 211, 77, 0.38), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(26, 168, 184, 0.2), transparent 28%),
+    linear-gradient(135deg, rgba(255, 247, 226, 0.98), rgba(255, 233, 239, 0.96));
+  border: 2px solid rgba(34, 34, 34, 0.08);
+  box-shadow: 0 14px 28px rgba(255, 139, 43, 0.14);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.registry-link strong {
+  display: block;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.05;
+}
+
+.registry-link-copy {
+  display: block;
+  margin-top: 8px;
+  font-weight: 600;
+  color: rgba(34, 34, 34, 0.74);
+}
+
+.registry-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(255, 139, 43, 0.2);
+}
+
 .confetti-burst-layer {
   position: fixed;
   inset: 0;
