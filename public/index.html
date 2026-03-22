@@ -257,6 +257,20 @@
     </main>
 
     <div id="confetti-burst-layer" class="confetti-burst-layer" aria-hidden="true"></div>
+    <div id="success-modal" class="success-modal hidden" aria-hidden="true">
+      <div class="success-backdrop" data-close-modal="true"></div>
+      <div class="success-dialog" role="dialog" aria-modal="true" aria-labelledby="success-title">
+        <p class="section-kicker">RSVP Complete</p>
+        <h2 id="success-title">Your art crew is officially in the masterpiece.</h2>
+        <p id="success-message" class="section-copy">
+          Your easel has been reserved and your RSVP is safely on the guest list.
+        </p>
+        <p class="success-note">
+          No need to submit again. We already have your colorful crew on the list.
+        </p>
+        <button type="button" id="close-success-modal">Amazing</button>
+      </div>
+    </div>
     <script src="/app.js" defer></script>
   </body>
 </html>

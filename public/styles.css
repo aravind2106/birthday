@@ -839,6 +839,47 @@ button:hover {
   z-index: 3;
 }
 
+.success-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.success-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 18, 8, 0.48);
+  backdrop-filter: blur(8px);
+}
+
+.success-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  padding: 28px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 211, 77, 0.35), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(26, 168, 184, 0.22), transparent 28%),
+    rgba(255, 251, 245, 0.98);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 28px 70px rgba(34, 34, 34, 0.22);
+  text-align: center;
+}
+
+.success-dialog h2 {
+  margin-bottom: 12px;
+}
+
+.success-note {
+  margin: 0 0 18px;
+  font-weight: 700;
+  color: rgba(34, 34, 34, 0.72);
+}
+
 .burst-piece {
   position: absolute;
   width: 12px;

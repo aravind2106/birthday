@@ -40,7 +40,8 @@ async function submitRsvp(form) {
     form.querySelector('[name="adultCount"]').value = "1";
     form.querySelector('[name="childCount"]').value = "1";
     form.querySelector('[name="attending"]').checked = true;
-    status.textContent = "Brilliant. Your art crew is on the guest list.";
+    status.textContent = "";
+    openSuccessModal(payload.guestName);
     burstConfetti(window.innerWidth / 2, Math.min(window.innerHeight * 0.4, 320), 36);
   } catch (error) {
     status.textContent = error.message;
@@ -51,6 +52,31 @@ async function submitRsvp(form) {
 
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function openSuccessModal(name) {
+  const modal = document.querySelector("#success-modal");
+  const message = document.querySelector("#success-message");
+
+  if (!modal || !message) {
+    return;
+  }
+
+  const safeName = name ? escapeHtml(name) : "Your art crew";
+  message.innerHTML = `${safeName}, your easel has been reserved and your RSVP is safely on the guest list.`;
+  modal.classList.remove("hidden");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function closeSuccessModal() {
+  const modal = document.querySelector("#success-modal");
+
+  if (!modal) {
+    return;
+  }
+
+  modal.classList.add("hidden");
+  modal.setAttribute("aria-hidden", "true");
 }
 
 function updateCountdown() {
@@ -260,6 +286,11 @@ window.setInterval(updateCountdown, 1000);
 window.addEventListener("load", launchPartyFriend, { once: true });
 
 document.addEventListener("click", (event) => {
+  if (event.target.closest("[data-close-modal='true'], #close-success-modal")) {
+    closeSuccessModal();
+    return;
+  }
+
   const isInteractiveElement = event.target.closest("input, textarea, button, label, a");
 
   if (isInteractiveElement) {
@@ -276,3 +307,9 @@ if (adminForm) {
     await loadAdmin(adminForm);
   });
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeSuccessModal();
+  }
+});
