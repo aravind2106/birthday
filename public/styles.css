@@ -138,6 +138,8 @@ body {
 }
 
 .headline-wrap {
+  position: relative;
+  z-index: 2;
   max-width: 44rem;
 }
 
@@ -417,17 +419,17 @@ h2 {
   position: absolute;
   display: flex;
   gap: 10px;
-  z-index: 0;
+  z-index: 1;
 }
 
 .balloon-left {
-  top: 170px;
-  left: -18px;
+  top: 360px;
+  left: -10px;
 }
 
 .balloon-right {
-  top: 190px;
-  right: 6px;
+  top: 400px;
+  right: 10px;
 }
 
 .balloon {
