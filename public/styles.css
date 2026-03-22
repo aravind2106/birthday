@@ -421,13 +421,13 @@ h2 {
 }
 
 .balloon-left {
-  top: 80px;
-  left: -6px;
+  top: 170px;
+  left: -18px;
 }
 
 .balloon-right {
-  top: 96px;
-  right: 10px;
+  top: 190px;
+  right: 6px;
 }
 
 .balloon {
