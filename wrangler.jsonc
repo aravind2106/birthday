@@ -9,8 +9,5 @@
       "database_name": "birthday-rsvp",
       "database_id": "5e798b49-a14e-45c2-9582-ba17305d03f3"
     }
-  ],
-  "vars": {
-    "ADMIN_PASSWORD": "SET_FOR_LOCAL_DEV_ONLY"
-  }
+  ]
 }
