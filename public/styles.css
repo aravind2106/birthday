@@ -143,6 +143,32 @@ body {
   max-width: 44rem;
 }
 
+.weather-update-banner {
+  margin: 22px 0 18px;
+  padding: 18px 20px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 211, 77, 0.35), transparent 26%),
+    linear-gradient(135deg, rgba(255, 244, 214, 0.98), rgba(255, 232, 239, 0.95));
+  border: 2px solid rgba(34, 34, 34, 0.08);
+  box-shadow: 0 16px 30px rgba(255, 139, 43, 0.12);
+}
+
+.weather-update-banner strong {
+  display: block;
+  margin-top: 4px;
+  font-family: "Baloo 2", sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  line-height: 1.02;
+}
+
+.weather-update-banner p {
+  margin: 8px 0 0;
+  line-height: 1.5;
+  color: rgba(34, 34, 34, 0.78);
+  font-weight: 600;
+}
+
 .countdown-card {
   display: grid;
   gap: 14px;

@@ -90,7 +90,7 @@ function updateCountdown() {
     return;
   }
 
-  const target = new Date("2026-04-12T15:00:00-05:00");
+  const target = new Date("2026-04-11T15:00:00-05:00");
   const now = new Date();
   const difference = target.getTime() - now.getTime();
 
@@ -109,7 +109,7 @@ function updateCountdown() {
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
 
-  headline.textContent = `${days} days until Aarush's art party opens its studio doors.`;
+  headline.textContent = `${days} days until Saturday's art party opens its studio doors.`;
   dayNode.textContent = String(days);
   hourNode.textContent = String(hours);
   minuteNode.textContent = String(minutes);
